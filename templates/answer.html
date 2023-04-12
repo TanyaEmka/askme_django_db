@@ -1,0 +1,26 @@
+{% load static %}
+
+<article>
+  <div class="left_info">
+    <div class="avatar">
+      <img src="{% static 'images/avatar.svg' %}" />
+    </div>
+    <div class="likes">
+      <div class="img">
+        <img src="{% static 'images/like.svg' %}" />
+      </div>
+      <div class="name4">{{ element.likes }}</div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="question">
+      {{ element.text }}
+    </div>
+    <div class="other_info">
+      <input
+              type="checkbox"
+      />
+      <label class="name4">Лучший ответ</label>
+    </div>
+  </div>
+</article>

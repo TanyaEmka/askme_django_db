@@ -1,0 +1,56 @@
+.questions main .options {
+    margin-bottom: 1em;
+}
+
+.questions main .options .option {
+    box-sizing: border-box;
+    display: flex;
+    flex: 1;
+    justify-content: start;
+    align-items: center;
+    align-content: center;
+    margin-top: 1em;
+}
+
+.questions main .options .option div {
+    display: inline;
+}
+
+.questions main .options .option div img {
+    width: 10vh;
+    height: 10vh;
+}
+
+.questions main .options .option .h {
+    box-sizing: border-box;
+    display: inline;
+    width: 6em;
+}
+
+.questions main .options .option div input, .questions main .options .option div textarea {
+    box-sizing: border-box;
+    min-width: 40vw;
+    max-width: 800px;
+    padding: 0.5em;
+}
+
+.questions main .options .option div textarea {
+    resize: none;
+    height: 30vh;
+}
+
+.questions main .options .option .change_avatar {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    align-content: center;
+}
+
+.questions main .options .option .change_avatar .option_button {
+    display: inline;
+    margin-left: 0.5em;
+}
+
+.questions main .options .option .option_button input {
+    min-width: 0;
+}

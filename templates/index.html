@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="names">
+    <div class="header2">Новые вопросы</div>
+    <div><a href="{% url 'best_questions' %}" class="blue_href">Лучшие вопросы</a></div>
+</div>
+<div class="names">
+    <div class="header3">Всего результатов: {{ data.full_count }}</div>
+</div>
+<div class="question_boxes">
+    {% for question in data.questions %}
+        {% include 'question_box.html' with element=question %}
+    {% empty %}
+        <div>Ничего не найдено</div>
+    {% endfor %}
+</div>
+{% include 'paginator.html' with page_obj=data.questions url_name='questions' %}
+{% endblock %}

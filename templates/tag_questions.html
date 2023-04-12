@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="names">
+    <div><span class="header2">Тег: </span> <span class="name2-green">{{ data.tag.name }}</span></div>
+</div>
+<div class="names">
+    <div class="header3">Всего результатов: {{ data.full_count }}</div>
+</div>
+<div class="question_boxes">
+    {% for question in data.questions %}
+        {% include 'question_box.html' with element=question %}
+    {% empty %}
+        <div>Такого тега не существует</div>
+    {% endfor %}
+</div>
+{% include 'paginator.html' with page_obj=data.questions url_name='tag' parameter=data.tag.name %}
+{% endblock %}

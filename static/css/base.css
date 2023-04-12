@@ -1,0 +1,88 @@
+html, html input {
+    font-family: "Courier New", monospace;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+header, footer {
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    flex: 1;
+    width: 100%;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    background-color: #D1F2FF;
+}
+
+header {
+    padding-top: 2em;
+    padding-bottom: 0.5em;
+    margin-bottom: 4vh;
+}
+
+footer {
+    margin-top: 4vh;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 1em;
+    text-align: right;
+    font-weight: bold;
+    color: dodgerblue;
+}
+
+footer div {
+    width: 100%;
+}
+
+header .search_form {
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    flex: 1;
+    justify-content: start;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    align-items: center;
+    align-content: center;
+}
+
+header .search_form .text_input {
+    width: 80%;
+    margin-right: 1vw;
+}
+
+header .log_form {
+    display: flex;
+    flex: 1;
+    justify-content: end;
+}
+
+header .log_form div {
+    margin-right: 1vw;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content_body {
+    flex: 1 0 auto;
+    width: 100%;
+}
+
+footer {
+    flex: 0 0 auto;
+}

@@ -1,0 +1,79 @@
+.name1 {
+    font-size: 1.5em;
+    color: dodgerblue;
+}
+
+.name2 {
+    font-size: 1.5em;
+    color: dodgerblue;
+    user-select: none;
+}
+
+.name3 {
+    font-size: 1em;
+    color: dodgerblue;
+    user-select: none;
+}
+
+.name4 {
+    color: lightseagreen;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.name2-green {
+    color: lightseagreen;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.header1 {
+    font-size: 2em;
+    color: black;
+    user-select: none;
+}
+
+.header2 {
+    font-size: 1.5em;
+    color: black;
+    user-select: none;
+}
+
+.header3 {
+    font-size: 1em;
+    color: black;
+    user-select: none;
+}
+
+.text1 {
+    font-size: 2em;
+    color: black;
+}
+
+.text2 {
+    font-size: 1.5em;
+    color: black;
+}
+
+.text3 {
+    font-size: 1em;
+    color: black;
+}
+
+.bold_text2 {
+    font-size: 1.5em;
+    color: black;
+    font-weight: bold;
+}
+
+.bold_text3 {
+    font-size: 1.3em;
+    color: dodgerblue;
+    font-weight: bold;
+}
+
+.error {
+    font-size: 1em;
+    color: red;
+    user-select: none;
+}

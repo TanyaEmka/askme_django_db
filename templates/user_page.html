@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block hrefs %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/new_question.css' %}">
+{% endblock %}
+
+{% block content %}
+<div>
+  <span class="header2">Настройки: </span><span class="text2">Firstname Lastname</span>
+</div>
+<div class="options">
+  <div class="option">
+    <div class="header3 h">Логин</div>
+    <div>
+      <input
+              type="text"
+              value="userxxxxxxx11"
+      />
+    </div>
+  </div>
+  <div class="option">
+    <div class="header3 h">Почта</div>
+    <div>
+      <input
+              type="text"
+              value="firstlast@gmail.com"
+      />
+    </div>
+  </div>
+  <div class="option">
+    <div class="header3 h">Никнейм</div>
+    <div>
+      <input
+              type="text"
+              value="Firstname Lastname"
+      />
+    </div>
+  </div>
+  <div class="option">
+    <div class="header3 h">Аватар</div>
+    <div class="change_avatar">
+      <div>
+        <img src="{% static 'images/avatar.svg' %}" />
+      </div>
+      <div class="option_button">
+        <input
+                class="white_button"
+                type="button"
+                value="Изменить"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="option">
+    <div class="h"></div>
+    <div class="option_button">
+      <input
+              class="blue_button"
+              type="button"
+              value="Сохранить"
+      />
+    </div>
+  </div>
+</div>
+{% endblock %}

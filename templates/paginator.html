@@ -1,0 +1,40 @@
+{% load static %}
+
+
+<div class="paginator">
+  <div class="left">
+    {% if page_obj.has_previous %}
+        {% if parameter != None %}
+            <a
+                    href="{% url url_name parameter %}?page={{page_obj.previous_page_number}}"
+                    style="text-decoration:none; color:black;"
+            >
+        {% else %}
+            <a
+                    href="{% url url_name %}?page={{page_obj.previous_page_number}}"
+                    style="text-decoration:none; color: black;"
+            >
+        {% endif %}
+            назад
+        </a>
+    {% endif%}
+  </div>
+  <div class="page">{{ page_obj.number }}</div>
+  <div class="right">
+    {% if page_obj.has_next %}
+        {% if parameter != None %}
+            <a
+                    href="{% url url_name parameter %}?page={{page_obj.next_page_number}}"
+                    style="text-decoration:none; color: black;"
+            >
+        {% else %}
+            <a
+                    href="{% url url_name %}?page={{page_obj.next_page_number}}"
+                    style="text-decoration:none; color: black;"
+            >
+        {% endif %}
+            далее
+        </a>
+    {% endif%}
+  </div>
+</div>

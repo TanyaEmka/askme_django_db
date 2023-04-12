@@ -1,0 +1,31 @@
+.blue_href {
+    font-size: 1em;
+    text-decoration: none;
+}
+
+.big_blue_href {
+    font-size: 1.3em;
+    text-decoration: none;
+}
+
+.blue_href, .blue_href:hover, .blue_href:visited, .big_blue_href, .big_blue_href:hover, .big_blue_href:visited{
+    color: dodgerblue;
+}
+
+.tag {
+    text-decoration: none;
+}
+
+.tag, .tag:hover, .tag:visited {
+    color: lightseagreen;
+    font-size: 1em;
+}
+
+.blue_href, .big_blue_href, .tag {
+    font-weight: bold;
+    user-select: none;
+}
+
+.blue_href:hover, .big_blue_href:hover, .tag:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,46 @@
+.blue_button {
+    display: inline-block;
+    border-radius: 0.5em;
+    background-color: dodgerblue;
+    border: 0.2vh solid dodgerblue;
+    color: white;
+    padding: 0.5em 1.5em;
+    transition-duration: 0.3s;
+}
+
+.blue_button:hover {
+    background-color: #6CB0F2;
+    border: 0.2vh solid #6CB0F2;
+    transition-duration: 0.3s;
+}
+
+.white_button {
+    display: inline-block;
+    font-weight: bold;
+    border-radius: 0.5em;
+    color: dodgerblue;
+    border: 0.2vh solid dodgerblue;
+    background-color: white;
+    padding: 0.5em 1.5em;
+    transition-duration: 0.3s;
+}
+
+.white_button:hover {
+    color: #6CB0F2;
+    border: 0.2vh solid #6CB0F2;
+    transition-duration: 0.3s;
+}
+
+.search {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0.5em;
+    border: 0.2vh solid white;
+    outline: none;
+    padding: 0.5em 1.5em;
+}
+
+.search:active, .search:focus {
+    border: 0.2vh solid dodgerblue;
+    outline: none;
+}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block hrefs %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/new_question.css' %}">
+{% endblock %}
+
+{% block content %}
+<div>
+    <span class="header2">Вход</span>
+</div>
+<div>
+    <p><span class="error"></span></p>
+</div>
+<div class="options">
+    <div class="option">
+        <div class="header3 h">Логин</div>
+        <div>
+            <input
+                    type="text"
+                    value="userxxxxxxx11"
+            />
+        </div>
+    </div>
+    <div class="option">
+        <div class="header3 h">Пароль</div>
+        <div>
+            <input
+                    type="password"
+                    value="12345"
+            />
+        </div>
+    </div>
+    <div class="option">
+        <div class="h"></div>
+        <div class="option_button">
+            <span class="blue_href">создать новый аккаунт</span>
+        </div>
+    </div>
+    <div class="option">
+        <div class="h"></div>
+        <div class="option_button">
+            <input
+                    class="blue_button"
+                    type="button"
+                    value="Войти"
+            />
+        </div>
+    </div>
+</div>
+{% endblock %}

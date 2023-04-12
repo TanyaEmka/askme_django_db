@@ -1,0 +1,67 @@
+.full_question {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.full_question .top_info {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    align-content: center;
+}
+
+.full_question .top_info .avatar {
+    width: 8vh;
+    height: 8vh;
+}
+
+.full_question .top_info .avatar img {
+    width: 100%;
+}
+
+.full_question .top_info .user_info {
+    margin-left: 1em;
+}
+
+.full_question .top_info .user_info .comm_info {
+    display: flex;
+    flex: 1;
+    margin-top: 0.5em;
+}
+
+.full_question .top_info .user_info .comm_info .likes {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    align-content: center;
+}
+
+.full_question .top_info .user_info .comm_info .likes .img {
+    width: 2vh;
+    margin-right: 1vh;
+}
+
+.full_question .content .question {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+main .answer_form {
+    max-width: 800px;
+    margin-top: 1.5em;
+}
+
+main .answer_form .text_form {
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+main .answer_form .text_form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 10vh;
+    resize: none;
+    padding: 1em;
+}

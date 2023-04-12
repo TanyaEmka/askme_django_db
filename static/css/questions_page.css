@@ -1,0 +1,130 @@
+.questions {
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    flex: 1;
+    justify-content: start;
+}
+
+.questions main {
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-left: 5%;
+    margin-right: 2%;
+}
+
+.questions main .names {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    align-content: center;
+}
+
+.questions main .names div {
+    margin-right: 2vh;
+}
+
+.question_boxes {
+    max-width: 800px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: inline-block;
+    margin-bottom: 2em;
+}
+
+.question_boxes article {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    padding: 1vh;
+    padding-left: 2vh;
+    border: 0.3em dashed #BFEAFB;
+    display: inline-flex;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.question_boxes article .left_info {
+    display: inline-block;
+    align-items: center;
+    align-content: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.question_boxes article .left_info .avatar {
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+}
+
+.question_boxes article .left_info .avatar img {
+    width: 100%;
+}
+
+.question_boxes article .left_info .likes {
+    display: block;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    margin-top: 0.5em;
+}
+
+.question_boxes article .left_info .likes .img img {
+    width: 3vh;
+    background-image: dodgerblue;
+}
+
+.question_boxes article .content {
+    display: block;
+    margin-left: 2vh;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.question_boxes article .content .question {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.question_boxes article .content .other_info {
+    margin-bottom: 0;
+    margin-top: 1.5em;
+}
+
+.tag_box, .href_box {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.paginator {
+    display: flex;
+    text-align: center;
+}
+
+.paginator div {
+    padding: 0.5em;
+    user-select: none;
+}
+
+.paginator .left, .paginator .right {
+    background: aliceblue;
+    transition-duration: 0.3s;
+}
+
+.paginator .left:hover, .paginator .right:hover {
+    background: #DBE4ED;
+    transition-duration: 0.3s;
+}
+
+.paginator .page {
+    background: dodgerblue;
+    color: white;
+}
+
+.questions aside {
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-right: 5%;
+    min-width: 300px;
+    max-width: 25%;
+}

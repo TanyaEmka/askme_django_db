@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title>AskMe</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/names.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/questions_page.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/inputs.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/hrefs.css' %}">
+    {% block hrefs %}{% endblock %}
+  </head>
+  <body>
+    <div class="content_body">
+      <header>
+        <div class="name1">
+          <a href="{% url 'questions' %}" style="text-decoration:none; color:dodgerblue;">AskMe</a>
+        </div>
+        <div class="search_form">
+          <div class="text_input">
+            <input
+              class="search"
+              type="text"
+              placeholder="Поиск"
+            />
+          </div>
+          <div>
+            <input
+              class="blue_button"
+              type="button"
+              value="Вперёд!"
+            />
+          </div>
+        </div>
+        <div class="log_form">
+            <div>
+                <a href="{% url 'login' %}" class="blue_href">
+                    Войти
+                </a>
+            </div>
+          <div>
+              <a href="{% url 'registration' %}" class="blue_href">
+                Регистрация
+              </a>
+          </div>
+        </div>
+      </header>
+
+      <div class="questions">
+          <main>
+              {% block content %}{% endblock %}
+          </main>
+          <aside>
+              <div>
+                  <div class="header2">Популярные теги</div>
+                  <div class="tag_box">
+                    <span class="tag">django</span>
+                    <span class="tag">HTML</span>
+                    <span class="tag">python</span>
+                  </div>
+              </div>
+              <hr></hr>
+              <div>
+                  <div class="header2">Топ пользователей</div>
+                  <div class="href_box">
+                    <p class="blue_href">User1</p>
+                    <p class="blue_href">Abebsandr</p>
+                    <p class="blue_href">Sasha</p>
+                    <p class="blue_href">Cookie</p>
+                    <p class="blue_href">user33</p>
+                  </div>
+              </div>
+          </aside>
+      </div>
+    </div>
+
+    <footer>
+      <div>
+        //
+      </div>
+    </footer>
+  </body>
+</html>

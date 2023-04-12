@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block hrefs %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/question.css' %}">
+{% endblock %}
+
+{% block content %}
+<article class="full_question">
+  <div class="top_info">
+    <div class="avatar">
+      <img src="{% static 'images/avatar.svg' %}" />
+    </div>
+    <div class="user_info">
+      <div class="bold_text3">{{ data.question.user.first_name }} {{ data.question.user.last_name }}</div>
+      <div class="comm_info">
+        <div class="likes">
+          <div class="img">
+            <img src="{% static 'images/like.svg' %}" />
+          </div>
+          <div class="name4" style="margin-right: 1em;">{{ data.question.likes }}</div>
+        </div>
+        <div class="data">
+          {{ data.question.date }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr></hr>
+  <div class="content">
+    <div>
+      <span class="bold_text2">{{ data.question.title }}</span>
+    </div>
+    <div class="question">
+      {{ data.question.text }}
+    </div>
+    <div class="other_info">
+      <div>
+        <span>Теги:</span>
+        {% for tag in data.question.question_tags.all %}
+        <a href="{% url 'tag' tag.tag.name %}" class="tag">{{ tag.tag.name }}</a>
+        {% empty %}
+          <span>Тегов нет</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</article>
+<div class="question_boxes">
+    <div>
+      <p class="name3">Всего ответов: {{ data.full_count }}</p>
+    </div>
+    {% for answer in data.answers %}
+      {% include 'answer.html' with element=answer %}
+    {% empty %}
+      <p class="header2">Ответов нет</p>
+    {% endfor %}
+</div>
+{% include 'paginator.html' with page_obj=data.answers url_name='question' parameter=data.question.id %}
+<hr></hr>
+<div class="answer_form">
+  <div class="text_form">
+    <textarea
+            placeholder="Введите ответ"
+    ></textarea>
+  </div>
+  <div>
+    <input
+            class="blue_button"
+            type="button"
+            value="Ответить"
+    />
+  </div>
+</div>
+{% endblock %}
