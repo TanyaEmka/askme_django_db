@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
-from app.models import Question, Tag, Profile, Answer, QuestionTags, Like, AnswerLike
+from app.models import Question, Tag, Profile, Answer, QuestionTags, Like
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
 from django.utils import timezone
 
@@ -33,10 +34,9 @@ class Command(BaseCommand):
                                   'Я думаю над тем, как создать собственное веб-приложение. Не могли бы вы'
                                   'посоветовать, какие технологии мне нужно изучить и с каких языков '
                                   'программирования начать? ' + index + '-' + index_j,
-                             date=timezone.now(),
                              user=u)
                 qt = QuestionTags(tag=t, question=q)
-                like = Like(user=u, question=q)
+                like = Like(user=u, content_type=ContentType.objects.get_for_model(q), object_id=q.id)
                 q.save()
                 qt.save()
                 like.save()
@@ -49,13 +49,11 @@ class Command(BaseCommand):
                                     'Тебе будет легко сделать шаблонный пример, но над чем-то своим тебе придётся '
                                     'долго и упорно '
                                     'работать. Желаю удачи!' + index + '-' + index_j + '-' + index_k,
-                               date=timezone.now(),
-                               best_answer=False,
                                question=q,
                                user=u)
                     a.save()
                     if j != 9:
-                        al = AnswerLike(user=u, answer=a)
+                        al = Like(user=u, content_type=ContentType.objects.get_for_model(a), object_id=a.id)
                         al.save()
         for i in range(options['ratio']):
             if i != options['ratio'] - 1:
@@ -65,12 +63,12 @@ class Command(BaseCommand):
             for j in range(5):
                 q_index = 10 * i + j + 1
                 q = Question.objects.get(pk=q_index)
-                like = Like(user=current_u, question=q)
+                like = Like(user=current_u, content_type=ContentType.objects.get_for_model(q), object_id=q.id)
                 like.save()
             for k in range(95):
                 a_index = 100 * i + k + 1
                 a = Answer.objects.get(pk=a_index)
-                al = AnswerLike(user=current_u, answer=a)
+                al = Like(user=current_u, content_type=ContentType.objects.get_for_model(a), object_id=a.id)
                 al.save()
         print('End process')
 

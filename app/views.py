@@ -39,7 +39,7 @@ def best_questions_page(request):
 
 def question_page(request, question_id):
     context_question = models.Question.question_list.new_questions().get(pk=question_id)
-    context_answers = context_question.question_answers.all().annotate(likes=Count('a_likes'))
+    context_answers = context_question.question_answers.all()
     context = {'data': {
         'question': context_question,
         'answers': functions.get_page_data(context_answers, 5, request.GET.get('page')),
