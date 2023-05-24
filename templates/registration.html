@@ -13,71 +13,10 @@
   <p><span class="error"></span></p>
 </div>
 <div class="options">
-  <div class="option">
-    <div class="header3 h">Логин</div>
-    <div>
-      <input
-              type="text"
-              value="user11"
-      />
-    </div>
-  </div>
-  <div class="option">
-    <div class="header3 h">Почта</div>
-    <div>
-      <input
-              type="text"
-              value="newemail@mail.ru"
-      />
-    </div>
-  </div>
-  <div class="option">
-    <div class="header3 h">Никнейм</div>
-    <div>
-      <input
-              type="text"
-              value="User2 user"
-      />
-    </div>
-  </div>
-  <div class="option">
-    <div class="header3 h">Пароль</div>
-    <div>
-      <input
-              type="password"
-              value="12345"
-      />
-    </div>
-  </div>
-  <div class="option">
-    <div class="header3 h">Повторите пароль</div>
-    <div>
-      <input
-              type="password"
-              value="12345"
-      />
-    </div>
-  </div>
-  <div class="option">
-    <div class="header3 h">Аватар</div>
-    <div class="option_button">
-      <input
-              class="white_button"
-              type="button"
-              value="Файл"
-      />
-      <div>file.png</div>
-    </div>
-  </div>
-  <div class="option">
-    <div class="h"></div>
-    <div class="option_button">
-      <input
-              class="blue_button"
-              type="button"
-              value="Регистрация"
-      />
-    </div>
-  </div>
+    <form method="post" class="option" style="display: block; font-size: 0.9rem;" novalidate>
+      {% csrf_token %}
+      <div>{{ form.as_p }}</div>
+      <button type="submit" class="blue_button">Регистрация</button>
+    </form>
 </div>
 {% endblock %}

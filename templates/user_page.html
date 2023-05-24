@@ -15,7 +15,7 @@
     <div>
       <input
               type="text"
-              value="userxxxxxxx11"
+              value="{{ user.username }}"
       />
     </div>
   </div>
@@ -24,16 +24,25 @@
     <div>
       <input
               type="text"
-              value="firstlast@gmail.com"
+              value="{{ user.email }}"
       />
     </div>
   </div>
   <div class="option">
-    <div class="header3 h">Никнейм</div>
+    <div class="header3 h">Имя</div>
     <div>
       <input
               type="text"
-              value="Firstname Lastname"
+              value="{{ user.first_name }}"
+      />
+    </div>
+  </div>
+  <div class="option">
+    <div class="header3 h">Фамилия</div>
+    <div>
+      <input
+              type="text"
+              value="{{ user.last_name }}"
       />
     </div>
   </div>
@@ -43,23 +52,30 @@
       <div>
         <img src="{% static 'images/avatar.svg' %}" />
       </div>
-      <div class="option_button">
-        <input
-                class="white_button"
-                type="button"
-                value="Изменить"
-        />
-      </div>
     </div>
   </div>
   <div class="option">
     <div class="h"></div>
     <div class="option_button">
-      <input
-              class="blue_button"
-              type="button"
-              value="Сохранить"
-      />
+      <a href="{% url 'edit_user' %}">
+        <input
+                class="blue_button"
+                type="button"
+                value="Изменить"
+        />
+      </a>
+    </div>
+  </div>
+  <div class="option">
+    <div class="h"></div>
+    <div class="option_button">
+      <a href="{% url 'logout' %}">
+        <input
+                class="blue_button"
+                type="button"
+                value="Выйти"
+        />
+      </a>
     </div>
   </div>
 </div>

@@ -58,18 +58,18 @@
 </div>
 {% include 'paginator.html' with page_obj=data.answers url_name='question' parameter=data.question.id %}
 <hr></hr>
-<div class="answer_form">
-  <div class="text_form">
-    <textarea
-            placeholder="Введите ответ"
-    ></textarea>
-  </div>
-  <div>
-    <input
-            class="blue_button"
-            type="button"
-            value="Ответить"
-    />
-  </div>
-</div>
+{% if user.is_authenticated %}
+  <form class="answer_form" method="post">
+    {% csrf_token %}
+    <div class="text_form">
+      {{ data.form }}
+    </div>
+    <div>
+      <button
+              class="blue_button"
+              type="submit"
+      >Ответить</button>
+    </div>
+  </form>
+{% endif %}
 {% endblock %}

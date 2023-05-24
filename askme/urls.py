@@ -24,8 +24,10 @@ urlpatterns = [
     path('best/', views.best_questions_page, name='best_questions'),
     path('question/<int:question_id>/', views.question_page, name='question'),
     path('new_question/', views.new_question, name='new_question'),
-    path('login/', views.login, name='login'),
+    path('login/', views.login_view, name='login'),
     path('registration/', views.registration, name='registration'),
     path('user/', views.user_page, name='user'),
-    path('tag/<str:tag>/', views.tag_questions, name='tag')
+    path('edit_user/', views.user_edit_view, name='edit_user'),
+    path('tag/<str:tag>/', views.tag_questions, name='tag'),
+    path('logout/', views.logout_view, name='logout'),
 ]

@@ -8,7 +8,7 @@
       <div class="img">
         <img src="{% static 'images/like.svg' %}" />
       </div>
-      <div class="name4">{{ element.likes }}</div>
+      <div class="name4">{{ element.all_likes }}</div>
     </div>
   </div>
   <div class="content">
@@ -24,12 +24,12 @@
     </div>
     <div class="other_info">
       <div>
-        <span class="blue_href">Ответы ({{ element.answer_cnt }})</span>
+        <span class="blue_href">Ответы ({{ element.all_answers }})</span>
       </div>
       <div>
         <span>Теги:</span>
-        {% for tag in element.question_tags.all %}
-          <a href="{% url 'tag' tag.tag.name %}" class="tag">{{ tag.tag.name }}</a>
+        {% for tag in element.tags.all %}
+          <a href="{% url 'tag' tag.name %}" class="tag">{{ tag.name }}</a>
         {% empty %}
           <span>Тегов нет</span>
         {% endfor %}

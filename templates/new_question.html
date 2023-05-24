@@ -13,37 +13,44 @@
     <p><span class="error"> </span></p>
 </div>
 <div class="options">
-    <div class="option">
-        <div class="header3 h">Название</div>
-        <div>
-            <input
-                    type="text"
-            />
+    <form method="post">
+        {% csrf_token %}
+        <div class="option">
+            <label class="header3 h">Название</label>
+            <div>
+                <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="Название"
+                />
+            </div>
         </div>
-    </div>
-    <div class="option">
-        <div class="header3 h">Текст</div>
-        <div>
-            <textarea></textarea>
+        <div class="option">
+            <label class="header3 h">Текст</label>
+            <div>
+                <textarea id="text" name="text" placeholder="Текст"></textarea>
+            </div>
         </div>
-    </div>
-    <div class="option">
-        <div class="header3 h">Теги</div>
-        <div>
-            <input
-                    type="text"
-            />
+        <div class="option">
+            <label class="header3 h">Теги</label>
+            <div>
+                <input
+                        type="text"
+                        id="tags"
+                        name="tags"
+                        placeholder="Tag1, Tag2"
+                />
+            </div>
         </div>
-    </div>
-    <div class="option">
-        <div class="h"></div>
-        <div class="option_button">
-            <input
-                    class="blue_button"
-                    type="button"
-                    value="Опубликовать"
-            />
+        <div class="option">
+            <div class="h"></div>
+            <div class="option_button">
+                <button class="blue_button" type="submit">
+                    Опубликовать
+                </button>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 {% endblock %}
