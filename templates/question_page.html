@@ -15,9 +15,21 @@
       <div class="bold_text3">{{ data.question.user.first_name }} {{ data.question.user.last_name }}</div>
       <div class="comm_info">
         <div class="likes">
-          <div class="img">
-            <img src="{% static 'images/like.svg' %}" />
-          </div>
+          <button
+                  type="submit"
+                  data-object="question"
+                  {% if data.question.is_my_like%}
+                    data-action="up-vote"
+                  {% else %}
+                    data-action="down-vote"
+                  {% endif %}
+                  data-user="{{ data.question.user.id }}"
+                  data-id="{{ data.question.id }}"
+          >
+            <div class="img">
+              <img src="{% static 'images/like.svg' %}" />
+            </div>
+          </button>
           <div class="name4" style="margin-right: 1em;">{{ data.question.likes }}</div>
         </div>
         <div class="data">
@@ -37,8 +49,8 @@
     <div class="other_info">
       <div>
         <span>Теги:</span>
-        {% for tag in data.question.question_tags.all %}
-        <a href="{% url 'tag' tag.tag.name %}" class="tag">{{ tag.tag.name }}</a>
+        {% for tag in data.question.tags.all %}
+        <a href="{% url 'tag' tag.name %}" class="tag">{{ tag.name }}</a>
         {% empty %}
           <span>Тегов нет</span>
         {% endfor %}
@@ -56,6 +68,7 @@
       <p class="header2">Ответов нет</p>
     {% endfor %}
 </div>
+<a href="#new_q"></a>
 {% include 'paginator.html' with page_obj=data.answers url_name='question' parameter=data.question.id %}
 <hr></hr>
 {% if user.is_authenticated %}

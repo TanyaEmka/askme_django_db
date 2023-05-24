@@ -23,6 +23,7 @@
                         id="title"
                         name="title"
                         placeholder="Название"
+                        required
                 />
             </div>
         </div>
@@ -43,6 +44,13 @@
                 />
             </div>
         </div>
+        {% if error %}
+            <div class="option">
+                <div>
+                    {{ error }}
+                </div>
+            </div>
+        {% endif %}
         <div class="option">
             <div class="h"></div>
             <div class="option_button">

@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.db import transaction
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, redirect
+import math
 
 
 from django.shortcuts import render
@@ -49,13 +50,19 @@ def best_questions_page(request):
 def question_page(request, question_id):
     context_question = models.Question.objects.new_questions().get(pk=question_id)
     context = {}
+    page_number = 1
 
     if request.method == 'POST':
         form = forms.AnswerForm(request.POST)
         if form.is_valid():
             answer = models.Answer.objects.create_answer(user=request.user, question=context_question, text=form.cleaned_data['text'])
             answer.save()
-            return redirect('.')
+            context_answers_cnt = context_question.question_answers.all().count()
+            page_number = math.ceil(int(context_answers_cnt / 5)) + 1
+            if page_number != 1:
+                return redirect('./?page=' + str(page_number))
+            else:
+                return redirect('.')
         else:
             context.update({'error': "Invalid answer's data"})
 
@@ -77,7 +84,7 @@ def question_page(request, question_id):
 def new_question(request):
     if request.method == 'POST':
         title = request.POST['title']
-        tags = request.POST['tags'].split()
+        tags = request.POST['tags'].split(',')
         text = request.POST['text']
         question = models.Question.objects.create_question(user=request.user, title=title, tags=tags, text=text)
         if question is not None:
@@ -94,7 +101,10 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('user')
+            path = "/user"
+            if request.GET.get("next"):
+                path = request.GET.get("next")
+            return redirect(path)
         return render(request, 'login.html', {
             'error': 'Login or/and password are incorrect. Try again.'
         })
@@ -121,7 +131,7 @@ def registration(request):
 
         if form['password'].value() != form['repeated_password'].value():
             context.update({'error': 'Passwords are not the same.'})
-            return render(request, 'registration.html', context=context)
+            return render(request, 'registration.html', context={'error': 'Passwords are not the same.'})
 
         user = User.objects.create_user(username=username, email=email, password=password,
                                         first_name=form['first_name'].value(),

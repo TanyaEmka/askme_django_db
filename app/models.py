@@ -111,10 +111,12 @@ class QuestionsManager(models.Manager):
         title = kwargs['title']
         text = kwargs['text']
         tags = kwargs['tags']
+        print(tags)
         question = self.create(user=user_id, title=title, text=text)
         question.save()
         for tag in tags:
             curr_tag = Tag.objects.create_or_update_tag(tag)
+            curr_tag.save()
             question.tags.add(curr_tag)
         return question
 
@@ -131,7 +133,7 @@ class AnswerManager(models.Manager):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(blank=True, upload_to=user_directory_path)
+    avatar = models.ImageField(blank=True, upload_to=user_directory_path, default="avatar.svg")
 
     objects = ProfileManager()
 

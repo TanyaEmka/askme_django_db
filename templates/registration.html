@@ -16,6 +16,11 @@
     <form method="post" class="option" style="display: block; font-size: 0.9rem;" novalidate>
       {% csrf_token %}
       <div>{{ form.as_p }}</div>
+        {% if error %}
+    <div class="error" style="display:block; margin-bottom: 1rem;">
+        {{ error }}
+    </div>
+        {% endif %}
       <button type="submit" class="blue_button">Регистрация</button>
     </form>
 </div>
