@@ -3,6 +3,7 @@ from app.models import Question, Tag, Profile, Answer, Like
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.contrib.auth.hashers import make_password
 
 
 class Command(BaseCommand):
@@ -22,7 +23,7 @@ class Command(BaseCommand):
                      first_name=base_user[1] + index,
                      last_name=base_user[2] + index,
                      email=index + base_user[3],
-                     password=index + base_user[4])
+                     password=make_password(index + base_user[4]))
             p = Profile(user=u, avatar=None)
             t.save()
             u.save()
