@@ -15,6 +15,12 @@
       <div class="bold_text3">{{ data.question.user.first_name }} {{ data.question.user.last_name }}</div>
       <div class="comm_info">
         <div class="likes">
+          <script
+                  language="JavaScript"
+                  type="text/javascript"
+                  src="{% static 'js/main_js.js' %}"
+          >
+          </script>
           <button
                   type="submit"
                   data-object="question"
@@ -25,6 +31,8 @@
                   {% endif %}
                   data-user="{{ data.question.user.id }}"
                   data-id="{{ data.question.id }}"
+                  style="background: white; border: none;"
+                  class="vote"
           >
             <div class="img">
               <img src="{% static 'images/like.svg' %}" />

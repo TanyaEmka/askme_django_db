@@ -9,7 +9,7 @@
 <div class="names">
     <div class="header3">Всего результатов: {{ data.full_count }}</div>
 </div>
-<div class="question_boxes">
+<div class="question_boxes" style="display: block;">
     {% for question in data.questions %}
         {% include 'question_box.html' with element=question %}
     {% empty %}
