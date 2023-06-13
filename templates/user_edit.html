@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block hrefs %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/new_question.css' %}">
+{% endblock %}
+
+{% block content %}
+<div>
+  <span class="header2">Настройки</span>
+</div>
+<div class="options">
+  <form method="post" class="options" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        {{ form.as_p }}
+        {% if error %}
+          <div class="error">
+            {{ error }}
+          </div>
+        {% endif %}
+        <div class="option">
+          <button type="submit" class="blue_button">Сохранить</button>
+        </div>
+      <div class="col-3"></div>
+    </div>
+  </form>
+</div>
+{% endblock %}
