@@ -26,8 +26,14 @@
     </div>
   </form>
     <br>
+    {% if request.user.profile.avatar %}
     <div style="width: 50%;">
         <img style="width: 100%;" src="{{ request.user.profile.avatar.url }}" />
     </div>
+    {% else %}
+    <div style="width: 50%;">
+        <img style="width: 100%;" src="{% static 'images/avatar.svg' %}" />
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

@@ -1,9 +1,13 @@
 {% load static %}
 
-<article>
+<article style="width: 90%; box-sizing: border-box;">
   <div class="left_info">
     <div class="avatar">
-      <img src="{% static 'images/avatar.svg' %}" />
+      {% if element.user.profile.avatar %}
+        <img style="height: 100%; width: 100%;" src="{{ element.user.profile.avatar.url }}" />
+      {% else %}
+        <img src="{% static 'images/avatar.svg' %}" />
+      {% endif %}
     </div>
     <div class="likes">
       <div class="img">
@@ -12,7 +16,7 @@
       <div class="name4">{{ element.likes }}</div>
     </div>
   </div>
-  <div class="content">
+  <div class="content" style="width: 100%;">
     <div class="question">
       {{ element.text }}
     </div>

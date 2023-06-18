@@ -9,7 +9,11 @@
 <article class="full_question">
   <div class="top_info">
     <div class="avatar">
-      <img src="{% static 'images/avatar.svg' %}" />
+      {% if data.question.user.profile.avatar %}
+        <img style="height: 100%; width: 100%;" src="{{ data.question.user.profile.avatar.url }}" />
+      {% else %}
+        <img src="{% static 'images/avatar.svg' %}" />
+      {% endif %}
     </div>
     <div class="user_info">
       <div class="bold_text3">{{ data.question.user.first_name }} {{ data.question.user.last_name }}</div>
