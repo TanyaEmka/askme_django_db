@@ -10,7 +10,7 @@
   <span class="header2">Настройки</span>
 </div>
 <div class="options">
-  <form method="post" class="options" enctype="multipart/form-data">
+  <form method="post" class="options" enctype="multipart/form-data" enctype="multipart/form-data">
     {% csrf_token %}
     <div>
         {{ form.as_p }}
@@ -25,5 +25,9 @@
       <div class="col-3"></div>
     </div>
   </form>
+    <br>
+    <div style="width: 50%;">
+        <img style="width: 100%;" src="{{ request.user.profile.avatar.url }}" />
+    </div>
 </div>
 {% endblock %}

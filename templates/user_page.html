@@ -7,7 +7,7 @@
 
 {% block content %}
 <div>
-  <span class="header2">Настройки: </span><span class="text2">Firstname Lastname</span>
+  <span class="header2">Настройки: </span><span class="text2">{{ user.first_name }} {{ user.last_name }}</span>
 </div>
 <div class="options">
   <div class="option">
@@ -50,7 +50,11 @@
     <div class="header3 h">Аватар</div>
     <div class="change_avatar">
       <div>
+        {% if profile.avatar %}
+        <img src="{{ profile.avatar.url }}" />
+        {% else %}
         <img src="{% static 'images/avatar.svg' %}" />
+        {% endif %}
       </div>
     </div>
   </div>

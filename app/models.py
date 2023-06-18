@@ -46,28 +46,27 @@ class LikeManager(models.Manager):
 class ProfileManager(models.Manager):
     @staticmethod
     def update_profile_and_user(user, cleaned_data):
-        user_fields = ['username', 'email', 'first_name', 'last_name']
-        profile_fields = ['avatar']
-        fields_for_update = {'user': [], 'profile': []}
-        try:
-            profile = Profile.objects.get(user=user.id)
-            for element in profile_fields:
-                value = cleaned_data.get(element, False)
-                if value:
-                    fields_for_update['profile'].append(value)
-                    setattr(profile, element, value)
-            profile.save(update_fields=fields_for_update['profile'])
-        except:
-            pass
-        user = User.objects.get(pk=user.id)
-        for element in user_fields:
-            value = cleaned_data.get(element, False)
-            if value:
-                fields_for_update['user'].append(value)
-                setattr(user, element, value)
+        user_fields, profile_fields = ['username', 'email', 'first_name', 'last_name'], ['avatar']
+        fields_to_update = {'user': [], 'profile': []}
 
-        user.save()
-        return user
+        profile = Profile.objects.get(user=user.id)
+        user = User.objects.get(pk=user.id)
+
+        for key in user_fields:
+            value = cleaned_data.get(key, False)
+            if value:
+                fields_to_update['user'].append(key)
+                setattr(user, key, value)
+
+        for key in profile_fields:
+            value = cleaned_data.get(key, False)
+            if value:
+                fields_to_update['profile'].append(key)
+                setattr(profile, key, value)
+
+        user.save(update_fields=fields_to_update['user'])
+        profile.save(update_fields=fields_to_update['profile'])
+        return user, profile
 
 
 class TagManager(models.Manager):
@@ -133,7 +132,7 @@ class AnswerManager(models.Manager):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(blank=True, upload_to=user_directory_path, default="avatar.svg")
+    avatar = models.ImageField(blank=True, upload_to='avatars/%Y/%m/%d/', default="avatar.svg")
 
     objects = ProfileManager()
 

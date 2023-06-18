@@ -1,4 +1,5 @@
 from django import forms
+from app.models import User
 
 
 class RegistrationForm(forms.Form):
@@ -15,6 +16,7 @@ class EditProfileForm(forms.Form):
     email = forms.CharField(label='Почта', required=False)
     first_name = forms.CharField(label='Имя', required=False)
     last_name = forms.CharField(label='Фамилия', required=False)
+    avatar = forms.ImageField(label='Аватар', required=False)
 
 
 class AnswerForm(forms.Form):

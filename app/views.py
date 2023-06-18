@@ -2,12 +2,15 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db import transaction
+from django.forms import model_to_dict
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, redirect
 import math
 
 
 from django.shortcuts import render
+from django.views.decorators.http import require_http_methods
+
 from app import models
 from app import functions
 from app import forms
@@ -153,8 +156,9 @@ def registration(request):
 @login_required(login_url='/login/')
 def user_page(request):
     user = request.user
+    profile = models.Profile.objects.get(user__username=user.username)
     return render(request, 'user_page.html',
-                  {'user': user})
+                  {'user': user, 'profile': profile})
 
 
 @login_required(login_url='/login')
@@ -164,17 +168,24 @@ def logout_view(request):
 
 
 @login_required(login_url='/login')
+#@require_http_methods(['GET', 'POST'])
 def user_edit_view(request):
-    context = {}
-    if request.method == 'POST':
-        form = forms.EditProfileForm(request.POST, request.FILES)
-        if not form.is_valid():
-            context.update({'error': 'Something wrond with data', 'form': forms.EditProfileForm()})
-            return render(request, 'user_edit.html', context=context)
-
-        user = request.user
-        models.Profile.objects.update_profile_and_user(user, form.cleaned_data)
-        return redirect('/user')
     form = forms.EditProfileForm()
+    context = {}
+    if request.method == 'GET':
+        data = model_to_dict(request.user)
+        form = forms.EditProfileForm(initial=data)
+    if request.method == 'POST':
+        form = forms.EditProfileForm(request.POST, files=request.FILES)
+        if not form.is_valid():
+            context.update({'error': 'Something wrong with data', 'form': forms.EditProfileForm()})
+            return render(request, 'user_edit.html', context=context)
+        elif form.is_valid():
+            print('IS VALID')
+            print(form.cleaned_data)
+            user = request.user
+            models.Profile.objects.update_profile_and_user(user, form.cleaned_data)
+            #form.save()
+            return redirect('/user')
     context.update({'form': form})
     return render(request, 'user_edit.html', context=context)
